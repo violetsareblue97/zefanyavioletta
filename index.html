@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zefanya Violetta Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #f8fafc;
+            color: #260067;
+        }
+        .nav-link {
+            position: relative;}
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background-color: #260067;
+            transition: width 0.3s ease;
+        }
+        
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        
+        .card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+        }
+        
+        .contact-btn {
+            transition: all 0.3s ease;
+        }
+        
+        .contact-btn:hover {
+            transform: scale(1.05);
+        }
+        
+        #portfolio, #contact {
+            min-height: calc(100vh - 80px);
+        }
+        
+        .section-title {
+            position: relative;
+            display: inline-block;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            width: 60%;
+            height: 3px;
+            bottom: -5px;
+            left: 0;
+            background-color: #260067;
+        }
+
+    </style>
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav class="bg-white shadow-sm fixed w-full z-10">
+        <div class="max-w-6xl mx-auto px-4">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex-shrink-0">
+                    <a href="#" class="text-xl font-semibold text-indigo-600">ZV</a>
+                </div>
+                <div class="hidden md:flex space-x-8">
+                    <a href="#portfolio" class="nav-link px-3 py-2 text-sm font-medium text-slate-700 hover:text-indigo-600">Portfolio</a>
+                    <a href="#contact" class="nav-link px-3 py-2 text-sm font-medium text-slate-700 hover:text-indigo-600">Contact</a>
+                </div>
+                <div class="md:hidden">
+                    <button id="menu-toggle" class="p-2 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white shadow-md">
+            <div class="px-2 pt-2 pb-3 space-y-1">
+                <a href="#portfolio" class="block px-3 py-2 text-base font-medium text-slate-700 hover:text-indigo-600">Portfolio</a>
+                <a href="#contact" class="block px-3 py-2 text-base font-medium text-slate-700 hover:text-indigo-600">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!--halaman Portfolio -->
+<section id="portfolio" class="pt-24 pb-16 px-4 max-w-6xl mx-auto">
+    <div class="text-center mb-12">
+        <h2 class="text-3xl font-bold text-slate-800 mb-4 section-title">Hi! I am Zefanya Violetta</h2>
+        <p class="text-slate-600 max-w-2xl mx-auto">These are my current projects. Feel free to check them out.</p>
+    </div>
+    
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <!-- Portfolio Item 1 -->
+        <div class="card bg-white rounded-lg overflow-hidden shadow-md">
+            <div class="card-image h-48 overflow-hidden">
+                <img src="Capture.PNG" alt="Modern web application dashboard with analytics charts and metrics" class="w-full h-full object-cover" />
+            </div>
+            <div class="p-6">
+                <h3 class="text-xl font-semibold text-slate-800 mb-2">BMI Calculator</h3>
+                <p class="text-slate-600 mb-4">A Body Mass Index Calculator website.</p>
+                <a href="https://revou-fundamental-course.github.io/28-oct-24-violetsareblue97/" target="_blank" class="inline-block px-4 py-2 bg-indigo-600 text-white rounded-md hover:bg-indigo-700 transition">View Project</a>
+            </div>
+        </div>
+        
+        <!-- Portfolio Item 2 -->
+        <div class="card bg-white rounded-lg overflow-hidden shadow-md">
+            <div class="card-image h-48 overflow-hidden">
+                <img src="https://placehold.co/600x400" alt="Mobile application interface on smartphone showing user profile screen" class="w-full h-full object-cover" />
+            </div>
+            <div class="p-6">
+                <h3 class="text-xl font-semibold text-slate-800 mb-2">Project Two</h3>
+                <p class="text-slate-600 mb-4">Mobile application designed for iOS and Android platforms.</p>
+                <a href="#" class="inline-block px-4 py-2 bg-indigo-600 text-white rounded-md hover:bg-indigo-700 transition">View Project</a>
+            </div>
+        </div>
+        
+        <!-- Portfolio Item 3 -->
+        <div class="card bg-white rounded-lg overflow-hidden shadow-md">
+            <div class="card-image h-48 overflow-hidden">
+                <img src="https://placehold.co/600x400" alt="E-commerce website showing product listing with filters and search" class="w-full h-full object-cover" />
+            </div>
+            <div class="p-6">
+                <h3 class="text-xl font-semibold text-slate-800 mb-2">Project Three</h3>
+                <p class="text-slate-600 mb-4">Complete e-commerce solution with payment integration.</p>
+                <a href="#" class="inline-block px-4 py-2 bg-indigo-600 text-white rounded-md hover:bg-indigo-700 transition">View Project</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+ <!-- Contact Section -->
+    <section id="contact" class="pt-24 pb-16 px-4 max-w-6xl mx-auto bg-indigo-50 rounded-lg my-12">
+        <div class="text-center mb-12">
+            <h2 class="text-3xl font-bold text-slate-800 mb-4 section-title">Contact Me</h2>
+            <p class="text-slate-600 max-w-2xl mx-auto">Feel free to reach out for collaborations or just to say hello!</p>
+        </div>
+        
+        <div class="max-w-md mx-auto bg-white rounded-lg shadow-md overflow-hidden">
+            <div class="px-8 py-10">
+                <div class="flex flex-col space-y-6">
+                    <!-- Email Button -->
+                    <a href="mailto:zefanyavioletta97@gmail.com?subject=Portfolio%20Inquiry" class="contact-btn px-6 py-4 bg-indigo-600 text-white rounded-lg flex items-center justify-center space-x-3 hover:bg-indigo-700">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                        </svg>
+                        <span>zefanyavioletta97@gmail.com</span>
+                    </a>
+                    <a href="https://www.linkedin.com/in/zefanyavioletta" target="_blank" class="contact-btn px-6 py-4 bg-blue-600 text-white rounded-lg flex items-center justify-center space-x-3 hover:bg-blue-700">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+                        </svg>
+                        <span>linkedin.com/in/zefanyavioletta</span>
+                    </a> </div>
+                
+                
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Footer -->
+    <footer class="bg-white py-8 px-4 border-t">
+        <div class="max-w-6xl mx-auto text-center">
+            <p class="text-slate-600">Zefanya Violetta Rosinta Sitorus</p>
+            <div class="flex justify-center space-x-6 mt-4">
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        document.getElementById('menu-toggle').addEventListener('click', function() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        });
+        
+        // Close mobile menu when clicking on a link
+        document.querySelectorAll('#mobile-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                document.getElementById('mobile-menu').classList.add('hidden');
+            });
+        });
+        
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // Project link management
+        document.addEventListener('DOMContentLoaded', function() {
+            https://revou-fundamental-course.github.io/28-oct-24-violetsareblue97/
+            const addProjectCard = document.querySelector('.card.border-dashed');
+            
+            if (addProjectCard) {
+                addProjectCard.addEventListener('click', function() {
+                });
+            }
+                });
+    </script>
+</body>
+</html>

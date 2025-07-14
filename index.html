@@ -71,7 +71,6 @@
 </head>
 
 <body>
-    <!-- Navigation -->
     <nav class="bg-white shadow-sm fixed w-full z-10">
         <div class="max-w-6xl mx-auto px-4">
             <div class="flex justify-between items-center h-16">
@@ -91,7 +90,7 @@
                 </div>
             </div>
         </div>
-        <!-- Mobile Menu -->
+
         <div id="mobile-menu" class="hidden md:hidden bg-white shadow-md">
             <div class="px-2 pt-2 pb-3 space-y-1">
                 <a href="#portfolio" class="block px-3 py-2 text-base font-medium text-slate-700 hover:text-indigo-600">Portfolio</a>
@@ -100,7 +99,8 @@
         </div>
     </nav>
 
-    <!--halaman Portfolio -->
+
+    
 <section id="portfolio" class="pt-24 pb-16 px-4 max-w-6xl mx-auto">
     <div class="text-center mb-12">
         <h2 class="text-3xl font-bold text-slate-800 mb-4 section-title">Hi! I am Zefanya Violetta</h2>
@@ -108,7 +108,8 @@
     </div>
     
     <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        <!-- Portfolio Item 1 -->
+
+        <!--Project1-->
         <div class="card bg-white rounded-lg overflow-hidden shadow-md">
             <div class="card-image h-48 overflow-hidden">
                 <img src="Capture.PNG" alt="Modern web application dashboard with analytics charts and metrics" class="w-full h-full object-cover" />
@@ -120,7 +121,7 @@
             </div>
         </div>
         
-        <!-- Portfolio Item 2 -->
+        <!-- Project2 -->
         <div class="card bg-white rounded-lg overflow-hidden shadow-md">
             <div class="card-image h-48 overflow-hidden">
                 <img src="https://placehold.co/600x400" alt="Mobile application interface on smartphone showing user profile screen" class="w-full h-full object-cover" />
@@ -128,11 +129,11 @@
             <div class="p-6">
                 <h3 class="text-xl font-semibold text-slate-800 mb-2">Project Two</h3>
                 <p class="text-slate-600 mb-4">Mobile application designed for iOS and Android platforms.</p>
-                <a href="#" class="inline-block px-4 py-2 bg-indigo-600 text-white rounded-md hover:bg-indigo-700 transition">View Project</a>
+                <a href="https://violetsareblue97.github.io/pustakakita/" target="_blank" class="inline-block px-4 py-2 bg-indigo-600 text-white rounded-md hover:bg-indigo-700 transition">View Project</a>
             </div>
         </div>
         
-        <!-- Portfolio Item 3 -->
+        <!-- Project3 -->
         <div class="card bg-white rounded-lg overflow-hidden shadow-md">
             <div class="card-image h-48 overflow-hidden">
                 <img src="https://placehold.co/600x400" alt="E-commerce website showing product listing with filters and search" class="w-full h-full object-cover" />
@@ -140,13 +141,13 @@
             <div class="p-6">
                 <h3 class="text-xl font-semibold text-slate-800 mb-2">Project Three</h3>
                 <p class="text-slate-600 mb-4">Complete e-commerce solution with payment integration.</p>
-                <a href="#" class="inline-block px-4 py-2 bg-indigo-600 text-white rounded-md hover:bg-indigo-700 transition">View Project</a>
+                <a href="https://violetsareblue97.github.io/counter/" target="_blank" class="inline-block px-4 py-2 bg-indigo-600 text-white rounded-md hover:bg-indigo-700 transition">View Project</a>
             </div>
         </div>
     </div>
 </section>
 
- <!-- Contact Section -->
+ <!-- Halaman Contacts -->
     <section id="contact" class="pt-24 pb-16 px-4 max-w-6xl mx-auto bg-indigo-50 rounded-lg my-12">
         <div class="text-center mb-12">
             <h2 class="text-3xl font-bold text-slate-800 mb-4 section-title">Contact Me</h2>
@@ -176,7 +177,7 @@
     </section>
 
 
-    <!-- Footer -->
+
     <footer class="bg-white py-8 px-4 border-t">
         <div class="max-w-6xl mx-auto text-center">
             <p class="text-slate-600">Zefanya Violetta Rosinta Sitorus</p>
@@ -186,20 +187,23 @@
     </footer>
 
     <script>
-        // Mobile menu toggle
+
+        
         document.getElementById('menu-toggle').addEventListener('click', function() {
             const menu = document.getElementById('mobile-menu');
             menu.classList.toggle('hidden');
         });
+
         
-        // Close mobile menu when clicking on a link
         document.querySelectorAll('#mobile-menu a').forEach(link => {
             link.addEventListener('click', () => {
                 document.getElementById('mobile-menu').classList.add('hidden');
             });
         });
         
-        // Smooth scrolling for navigation links
+
+
+        
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function(e) {
                 e.preventDefault();
@@ -216,9 +220,11 @@
             });
         });
         
-        // Project link management
         document.addEventListener('DOMContentLoaded', function() {
             https://revou-fundamental-course.github.io/28-oct-24-violetsareblue97/
+            https://violetsareblue97.github.io/counter/
+            https://violetsareblue97.github.io/pustakakita/
+            
             const addProjectCard = document.querySelector('.card.border-dashed');
             
             if (addProjectCard) {
@@ -226,6 +232,7 @@
                 });
             }
                 });
-    </script>
+
+</script>
 </body>
 </html>

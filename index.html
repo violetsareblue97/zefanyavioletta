@@ -223,6 +223,10 @@
             anchor.addEventListener('click', function(e) {
                 e.preventDefault();
                 
+        document.querySelectorAll('b[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
                 const targetId = this.getAttribute('href');
                 const targetElement = document.querySelector(targetId);
                 
@@ -239,6 +243,7 @@
             https://revou-fundamental-course.github.io/28-oct-24-violetsareblue97/
             https://violetsareblue97.github.io/counter/
             https://violetsareblue97.github.io/pustakakita/
+            https://github.com/violetsareblue97/pustakakita
             
             const addProjectCard = document.querySelector('.card.border-dashed');
             

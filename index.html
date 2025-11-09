@@ -12,10 +12,10 @@
             theme: {
                 extend: {
                     colors: {
-                        'z-dark': '#212121', // Dark Gray/Black for text
-                        'z-accent': '#6366f1', // Indigo/Violet accent
-                        'z-light': '#f5f5f5', // Light background
-                        'z-medium': '#e0e7ff', // Light accent background
+                        'z-dark': '#212121', // Dark Gray/Black for text (kept for contrast)
+                        'z-accent': '#04785e', // Deep Emerald Green accent
+                        'z-light': '#f5f5f5', // Light background (kept)
+                        'z-medium': '#d1fae5', // Light Mint/Green accent background
                     },
                     fontFamily: {
                         sans: ['Inter', 'sans-serif'],
@@ -29,34 +29,64 @@
         html {
             scroll-behavior: smooth;
         }
+
+        /* NEW: Custom CSS for the wavy background texture */
+        /* To make the texture visible, we need to adjust the opacity on the specific sections. */
+        body {
+            /* Apply the base light color */
+            background-color: #f5f5f5; /* z-light */
+        }
+        
+        /* Make the sections that use z-light color have the texture */
+        #portfolio {
+            position: relative;
+            z-index: 0;
+        }
+        /* Apply the repeating background image only to the portfolio section */
+        #portfolio::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: url('9395310.jpg');
+            background-repeat: repeat;
+            background-size: 300px;
+            background-color: #f5f5f5; /* Base light color */
+            opacity: 0.1; /* Make it very subtle */
+            z-index: -2;
+        }
     </style>
 </head>
 
-<body class="font-sans bg-z-light text-z-dark">
+<body class="font-sans text-z-dark" style="background-color: #f5f5f5;">
 
     <!-- Header & Navigation -->
     <header class="sticky top-0 z-10 bg-white shadow-lg">
         <div class="container mx-auto px-4 py-4 flex justify-between items-center max-w-7xl">
-            <!-- Logo/Brand -->
-            <h1 class="text-2xl font-bold text-z-dark">ZEFANYA<span class="text-z-accent">.</span></h1>
-
-            <!-- Navigation Links (Hidden on small screens, shown as menu) -->
-            <nav class="hidden md:flex space-x-6 text-lg">
+            <!-- Logo/Brand (REMOVED) - Now pushing links to the left and spacing them out -->
+            
+            <!-- Navigation Links -->
+            <nav class="flex-grow flex justify-center md:justify-start space-x-6 text-lg">
                 <a href="#portfolio" class="hover:text-z-accent transition duration-300">Portfolio</a>
                 <a href="#expertise" class="hover:text-z-accent transition duration-300">Expertise</a>
                 <a href="#about" class="hover:text-z-accent transition duration-300">About Me</a>
-                <a href="#contact" class="px-4 py-2 bg-z-accent text-white rounded-lg hover:bg-indigo-600 transition duration-300 shadow-md">Let's Connect</a>
             </nav>
+            
+            <!-- Contact Button (Moved to far right) -->
+            <a href="#contact" class="px-4 py-2 bg-z-accent text-white rounded-lg hover:bg-[#065f46] transition duration-300 shadow-md">Let's Connect</a>
+
 
             <!-- Simple Mobile Menu Icon (Placeholder for functionality) -->
-            <button class="md:hidden text-z-dark focus:outline-none">
+            <button class="md:hidden text-z-dark focus:outline-none absolute right-4">
                 <!-- Lucide Menu Icon (using SVG for portability) -->
                 <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-menu"><line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="18" y2="18"/></svg>
             </button>
         </div>
     </header>
 
-    <!-- 1. Hero & Profile Introduction -->
+    <!-- 1. Hero & Profile Introduction (Plain white for sharp contrast) -->
     <section class="py-24 md:py-32 bg-white border-b-4 border-z-accent">
         <div class="container mx-auto px-4 max-w-5xl text-center">
             <h2 class="text-5xl md:text-7xl font-extrabold mb-4 leading-tight text-z-dark">
@@ -68,22 +98,20 @@
             <p class="text-lg text-gray-500 max-w-3xl mx-auto">
                 I value teamwork, communication, and attention to detail, whether it’s designing something meaningful or helping create a welcoming environment. Eager to learn, contribute, and grow while making a positive impact on other people.
             </p>
-            <a href="#contact" class="inline-block mt-10 px-8 py-3 text-lg font-semibold bg-z-accent text-white rounded-full shadow-lg hover:bg-indigo-600 transition duration-300 transform hover:scale-105">
-                View My Work
-            </a>
+            <!-- Removed 'View My Work' button here -->
         </div>
     </section>
 
-    <!-- 2. Design Portfolio Section -->
+    <!-- 2. Design Portfolio Section (Texture Applied using ::after pseudo-element) -->
     <section id="portfolio" class="py-20 md:py-28 bg-z-light">
-        <div class="container mx-auto px-4 max-w-7xl">
+        <div class="container mx-auto px-4 max-w-7xl relative z-10">
             <h3 class="text-4xl font-bold text-center mb-4 text-z-dark">Design Portfolio</h3>
             <p class="text-xl text-center text-gray-600 mb-16">Selected visual works and creative projects.</p>
 
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                 <!-- Project 1: Untitled design (7).jpg (T-Shirt Design) -->
                 <div class="bg-white rounded-xl shadow-xl overflow-hidden border border-gray-200">
-                    <img src="./Untitled design (7).jpg" alt="T-Shirt design featuring ramen and a figure diving into the bowl." class="w-full h-80 object-cover" onerror="this.onerror=null;this.src='https://placehold.co/600x400/6366f1/ffffff?text=Design+Project+1+Placeholder';">
+                    <img src="./Untitled design (7).jpg" alt="T-Shirt design featuring ramen and a figure diving into the bowl." class="w-full h-80 object-cover" onerror="this.onerror=null;this.src='https://placehold.co/600x400/04785e/ffffff?text=Design+Project+1+Placeholder';">
                     <div class="p-6">
                         <h4 class="text-2xl font-semibold mb-2 text-z-dark">Ramen T-Shirt Graphic</h4>
                         <p class="text-gray-600">A playful and vibrant graphic design piece used for apparel, blending food and figure illustration.</p>
@@ -92,7 +120,7 @@
 
                 <!-- Project 2: Untitled design (8).jpg (Mug Design) -->
                 <div class="bg-white rounded-xl shadow-xl overflow-hidden border border-gray-200">
-                    <img src="./Untitled design (8).jpg" alt="Mug design featuring ramen and a figure diving into the bowl." class="w-full h-80 object-cover" onerror="this.onerror=null;this.src='https://placehold.co/600x400/6366f1/ffffff?text=Design+Project+2+Placeholder';">
+                    <img src="./Untitled design (8).jpg" alt="Mug design featuring ramen and a figure diving into the bowl." class="w-full h-80 object-cover" onerror="this.onerror=null;this.src='https://placehold.co/600x400/04785e/ffffff?text=Design+Project+2+Placeholder';">
                     <div class="p-6">
                         <h4 class="text-2xl font-semibold mb-2 text-z-dark">Custom Mug Design</h4>
                         <p class="text-gray-600">Adaptation of the graphic for merchandise, focusing on product placement and visual appeal on a ceramic mug.</p>
@@ -101,7 +129,7 @@
 
                 <!-- Project 3: Untitled design (6).jpg (Banana Illustration) -->
                 <div class="bg-white rounded-xl shadow-xl overflow-hidden border border-gray-200">
-                    <img src="./Untitled design (6).jpg" alt="Vector illustration of a peeled banana and banana slices floating above a plate." class="w-full h-80 object-cover" onerror="this.onerror=null;this.src='https://placehold.co/600x400/6366f1/ffffff?text=Design+Project+3+Placeholder';">
+                    <img src="./Untitled design (6).jpg" alt="Vector illustration of a peeled banana and banana slices floating above a plate." class="w-full h-80 object-cover" onerror="this.onerror=null;this.src='https://placehold.co/600x400/04785e/ffffff?text=Design+Project+3+Placeholder';">
                     <div class="p-6">
                         <h4 class="text-2xl font-semibold mb-2 text-z-dark">Vector Illustration - Banana</h4>
                         <p class="text-gray-600">Digital illustration demonstrating skills in vector graphics, shading, and composition with rich colors.</p>
@@ -111,14 +139,14 @@
         </div>
     </section>
 
-    <!-- 3. Expertise & Projects Section (From CV) -->
+    <!-- 3. Expertise & Projects Section (Plain white for sharp contrast) -->
     <section id="expertise" class="py-20 md:py-28 bg-white">
         <div class="container mx-auto px-4 max-w-7xl">
             <h3 class="text-4xl font-bold text-center mb-4 text-z-dark">Expertise & Key Projects</h3>
             <p class="text-xl text-center text-gray-600 mb-16">Blending Technical Skill with Creative Execution.</p>
 
             <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
-                <!-- Skills Summary Card -->
+                <!-- Skills Summary Card uses z-medium, which is a light mint color -->
                 <div class="bg-z-medium p-8 rounded-xl shadow-xl border border-z-accent/20">
                     <h4 class="text-3xl font-bold mb-6 text-z-dark">Skills & Tools</h4>
                     <div class="space-y-4">
@@ -160,220 +188,25 @@
         </div>
     </section>
 
-    <!-- 4. CTA / Contact Section (FORM REMOVED) -->
+    <!-- 4. CTA / Contact Section (Direct Email Text) -->
     <section id="contact" class="py-20 md:py-28 bg-z-accent">
         <div class="container mx-auto px-4 max-w-4xl text-center text-white">
             <h3 class="text-4xl md:text-5xl font-extrabold mb-4">Let's Bring Your Ideas to Life.</h3>
-            <p class="text-xl mb-10 opacity-90">I'm currently open to new collaborations and eager to contribute to meaningful projects.</p>
+            <p class="text-xl mb-6 opacity-90">I'm currently open to new collaborations and eager to contribute to meaningful projects.</p>
             
-            <!-- Direct Contact Button (Replaces the form) -->
-            <a href="mailto:zefanyavioletta97@gmail.com" class="inline-block px-10 py-4 text-xl font-semibold bg-z-dark text-white rounded-lg shadow-xl hover:bg-gray-700 transition duration-300 transform hover:scale-[1.05]">
-                Email Me Directly
-            </a>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="py-10 bg-z-dark text-white">
-        <div class="container mx-auto px-4 max-w-7xl text-center">
-            <p class="text-2xl font-bold mb-2">Zefanya<span class="text-z-accent">.</span></p>
-            <p class="text-sm text-gray-400">&copy; 2025 Zefanya Violetta. All rights reserved.</p>
-            <div class="mt-4 space-x-4 text-sm text-gray-400">
-                <a href="www.linkedin.com/in/zefanyavioletta" target="_blank" class="hover:text-z-accent transition duration-300">LinkedIn</a>
-                <span class="text-gray-600">|</span>
-                <a href="mailto:zefanyavioletta97@gmail.com" class="hover:text-z-accent transition duration-300">Email</a>
-            </div>
-        </div>
-    </footer>
-
-</body>
-</html><!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Zefanya Violetta - Personal Portfolio</title>
-    <!-- Load Tailwind CSS from CDN for instant styling -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Custom configuration for Inter font and theme colors -->
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        'z-dark': '#212121', // Dark Gray/Black for text
-                        'z-accent': '#6366f1', // Indigo/Violet accent
-                        'z-light': '#f5f5f5', // Light background
-                        'z-medium': '#e0e7ff', // Light accent background
-                    },
-                    fontFamily: {
-                        sans: ['Inter', 'sans-serif'],
-                    },
-                }
-            }
-        }
-    </script>
-    <style>
-        /* Ensures smooth scroll behavior when clicking anchor links */
-        html {
-            scroll-behavior: smooth;
-        }
-    </style>
-</head>
-
-<body class="font-sans bg-z-light text-z-dark">
-
-    <!-- Header & Navigation -->
-    <header class="sticky top-0 z-10 bg-white shadow-lg">
-        <div class="container mx-auto px-4 py-4 flex justify-between items-center max-w-7xl">
-            <!-- Logo/Brand -->
-            <h1 class="text-2xl font-bold text-z-dark">ZEFANYA<span class="text-z-accent">.</span></h1>
-
-            <!-- Navigation Links (Hidden on small screens, shown as menu) -->
-            <nav class="hidden md:flex space-x-6 text-lg">
-                <a href="#portfolio" class="hover:text-z-accent transition duration-300">Portfolio</a>
-                <a href="#expertise" class="hover:text-z-accent transition duration-300">Expertise</a>
-                <a href="#about" class="hover:text-z-accent transition duration-300">About Me</a>
-                <a href="#contact" class="px-4 py-2 bg-z-accent text-white rounded-lg hover:bg-indigo-600 transition duration-300 shadow-md">Let's Connect</a>
-            </nav>
-
-            <!-- Simple Mobile Menu Icon (Placeholder for functionality) -->
-            <button class="md:hidden text-z-dark focus:outline-none">
-                <!-- Lucide Menu Icon (using SVG for portability) -->
-                <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-menu"><line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="18" y2="18"/></svg>
-            </button>
-        </div>
-    </header>
-
-    <!-- 1. Hero & Profile Introduction -->
-    <section class="py-24 md:py-32 bg-white border-b-4 border-z-accent">
-        <div class="container mx-auto px-4 max-w-5xl text-center">
-            <h2 class="text-5xl md:text-7xl font-extrabold mb-4 leading-tight text-z-dark">
-                Hi, I'm <span class="text-z-accent">Zefanya Violetta</span>
-            </h2>
-            <p class="text-xl md:text-2xl mb-8 text-gray-600">
-                A passionate and creative individual who enjoys connecting with people and bringing ideas to life through thoughtful and engaging experiences.
+            <!-- Direct Email Text & LinkedIn Link -->
+            <p class="text-xl md:text-2xl font-semibold space-y-2">
+                <a href="mailto:zefanyavioletta97@gmail.com" class="underline block text-white hover:text-z-dark transition duration-300">
+                    Email me at zefanyavioletta97@gmail.com
+                </a>
+                <a href="www.linkedin.com/in/zefanyavioletta" target="_blank" class="underline block text-white hover:text-z-dark transition duration-300">
+                    Connect on LinkedIn
+                </a>
             </p>
-            <p class="text-lg text-gray-500 max-w-3xl mx-auto">
-                I value teamwork, communication, and attention to detail, whether it’s designing something meaningful or helping create a welcoming environment. Eager to learn, contribute, and grow while making a positive impact on other people.
-            </p>
-            <a href="#contact" class="inline-block mt-10 px-8 py-3 text-lg font-semibold bg-z-accent text-white rounded-full shadow-lg hover:bg-indigo-600 transition duration-300 transform hover:scale-105">
-                View My Work
-            </a>
         </div>
     </section>
 
-    <!-- 2. Design Portfolio Section -->
-    <section id="portfolio" class="py-20 md:py-28 bg-z-light">
-        <div class="container mx-auto px-4 max-w-7xl">
-            <h3 class="text-4xl font-bold text-center mb-4 text-z-dark">Design Portfolio</h3>
-            <p class="text-xl text-center text-gray-600 mb-16">Selected visual works and creative projects.</p>
-
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <!-- Project 1: Untitled design (7).jpg (T-Shirt Design) -->
-                <div class="bg-white rounded-xl shadow-xl overflow-hidden border border-gray-200">
-                    <img src="./Untitled design (7).jpg" alt="T-Shirt design featuring ramen and a figure diving into the bowl." class="w-full h-80 object-cover" onerror="this.onerror=null;this.src='https://placehold.co/600x400/6366f1/ffffff?text=Design+Project+1+Placeholder';">
-                    <div class="p-6">
-                        <h4 class="text-2xl font-semibold mb-2 text-z-dark">Ramen T-Shirt Graphic</h4>
-                        <p class="text-gray-600">A playful and vibrant graphic design piece used for apparel, blending food and figure illustration.</p>
-                    </div>
-                </div>
-
-                <!-- Project 2: Untitled design (8).jpg (Mug Design) -->
-                <div class="bg-white rounded-xl shadow-xl overflow-hidden border border-gray-200">
-                    <img src="./Untitled design (8).jpg" alt="Mug design featuring ramen and a figure diving into the bowl." class="w-full h-80 object-cover" onerror="this.onerror=null;this.src='https://placehold.co/600x400/6366f1/ffffff?text=Design+Project+2+Placeholder';">
-                    <div class="p-6">
-                        <h4 class="text-2xl font-semibold mb-2 text-z-dark">Custom Mug Design</h4>
-                        <p class="text-gray-600">Adaptation of the graphic for merchandise, focusing on product placement and visual appeal on a ceramic mug.</p>
-                    </div>
-                </div>
-
-                <!-- Project 3: Untitled design (6).jpg (Banana Illustration) -->
-                <div class="bg-white rounded-xl shadow-xl overflow-hidden border border-gray-200">
-                    <img src="./Untitled design (6).jpg" alt="Vector illustration of a peeled banana and banana slices floating above a plate." class="w-full h-80 object-cover" onerror="this.onerror=null;this.src='https://placehold.co/600x400/6366f1/ffffff?text=Design+Project+3+Placeholder';">
-                    <div class="p-6">
-                        <h4 class="text-2xl font-semibold mb-2 text-z-dark">Vector Illustration - Banana</h4>
-                        <p class="text-gray-600">Digital illustration demonstrating skills in vector graphics, shading, and composition with rich colors.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- 3. Expertise & Projects Section (From CV) -->
-    <section id="expertise" class="py-20 md:py-28 bg-white">
-        <div class="container mx-auto px-4 max-w-7xl">
-            <h3 class="text-4xl font-bold text-center mb-4 text-z-dark">Expertise & Key Projects</h3>
-            <p class="text-xl text-center text-gray-600 mb-16">Blending Technical Skill with Creative Execution.</p>
-
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
-                <!-- Skills Summary Card -->
-                <div class="bg-z-medium p-8 rounded-xl shadow-xl border border-z-accent/20">
-                    <h4 class="text-3xl font-bold mb-6 text-z-dark">Skills & Tools</h4>
-                    <div class="space-y-4">
-                        <div class="flex items-center space-x-3">
-                            <span class="text-z-accent text-xl font-bold">Design:</span>
-                            <p class="text-lg text-z-dark">Figma, Canva, Adobe Illustrator, Visual Content Creation</p>
-                        </div>
-                        <div class="flex items-center space-x-3">
-                            <span class="text-z-accent text-xl font-bold">Programming:</span>
-                            <p class="text-lg text-z-dark">HTML/CSS, JavaScript, PHP, Kotlin, Python, React.js, Laravel</p>
-                        </div>
-                        <div class="flex items-center space-x-3">
-                            <span class="text-z-accent text-xl font-bold">Soft Skills:</span>
-                            <p class="text-lg text-z-dark">Creativity, Communication, Leadership, Team Work</p>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Projects List Card -->
-                <div class="bg-white p-8 rounded-xl shadow-xl border border-gray-200">
-                    <h4 class="text-3xl font-bold mb-6 text-z-dark">Recent Projects</h4>
-                    <ul class="space-y-6">
-                        <li class="border-b pb-4">
-                            <p class="text-xl font-semibold text-z-dark">Kelas STI - Mobile App for Classroom Booking System</p>
-                            <p class="text-gray-600 mt-1">Built using **Android Studio with Kotlin** and a local database for efficient resource management.</p>
-                        </li>
-                        <li class="border-b pb-4">
-                            <p class="text-xl font-semibold text-z-dark">BrainBloom - Company Profile Website</p>
-                            <p class="text-gray-600 mt-1">Developed a professional company profile site using **PHP and the Laravel framework**, implementing Blade Templates.</p>
-                        </li>
-                        <li>
-                            <p class="text-xl font-semibold text-z-dark">Body Mass Index Calculator Website</p>
-                            <p class="text-gray-600 mt-1">Website development focusing on arithmetic functions and category programming for health calculations.</p>
-                        </li>
-                    </ul>
-                </div>
-
-            </div>
-        </div>
-    </section>
-
-    <!-- 4. CTA / Contact Section (FORM REMOVED) -->
-    <section id="contact" class="py-20 md:py-28 bg-z-accent">
-        <div class="container mx-auto px-4 max-w-4xl text-center text-white">
-            <h3 class="text-4xl md:text-5xl font-extrabold mb-4">Let's Bring Your Ideas to Life.</h3>
-            <p class="text-xl mb-10 opacity-90">I'm currently open to new collaborations and eager to contribute to meaningful projects.</p>
-            
-            <!-- Direct Contact Button (Replaces the form) -->
-            <a href="mailto:zefanyavioletta97@gmail.com" class="inline-block px-10 py-4 text-xl font-semibold bg-z-dark text-white rounded-lg shadow-xl hover:bg-gray-700 transition duration-300 transform hover:scale-[1.05]">
-                Email Me Directly
-            </a>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="py-10 bg-z-dark text-white">
-        <div class="container mx-auto px-4 max-w-7xl text-center">
-            <p class="text-2xl font-bold mb-2">Zefanya<span class="text-z-accent">.</span></p>
-            <p class="text-sm text-gray-400">&copy; 2025 Zefanya Violetta. All rights reserved.</p>
-            <div class="mt-4 space-x-4 text-sm text-gray-400">
-                <a href="www.linkedin.com/in/zefanyavioletta" target="_blank" class="hover:text-z-accent transition duration-300">LinkedIn</a>
-                <span class="text-gray-600">|</span>
-                <a href="mailto:zefanyavioletta97@gmail.com" class="hover:text-z-accent transition duration-300">Email</a>
-            </div>
-        </div>
-    </footer>
+    <!-- Footer (REMOVED) -->
 
 </body>
 </html>

@@ -30,42 +30,56 @@
             scroll-behavior: smooth;
         }
 
-        /* NEW: Custom CSS for the wavy background texture */
-        /* To make the texture visible, we need to adjust the opacity on the specific sections. */
+        /* NEW: Custom CSS for the wavy background texture on the light background areas */
         body {
             /* Apply the base light color */
             background-color: #f5f5f5; /* z-light */
-        }
-        
-        /* Make the sections that use z-light color have the texture */
-        #portfolio {
-            position: relative;
-            z-index: 0;
-        }
-        /* Apply the repeating background image only to the portfolio section */
-        #portfolio::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
+            /* Add the subtle wavy background to the entire body to cover all light areas */
             background-image: url('9395310.jpg');
             background-repeat: repeat;
             background-size: 300px;
-            background-color: #f5f5f5; /* Base light color */
-            opacity: 0.1; /* Make it very subtle */
-            z-index: -2;
+            /* Use a subtle overlay to make the texture very faint */
+            opacity: 1; /* Keep base body opacity at 1 */
+        }
+        
+        /* The image-backed sections need high z-index, so we remove any pseudo-elements */
+        #portfolio::after {
+            content: none;
+        }
+
+        /* Utility class for setting the background image and styling the full-width block */
+        .design-background-block {
+            height: 400px; /* Consistent height for visual impact */
+            width: 100%;
+            background-size: cover;
+            background-position: center;
+            background-attachment: scroll;
+            margin-bottom: 3rem;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        /* Utility class for the text overlay */
+        .text-overlay {
+            position: absolute;
+            inset: 0;
+            background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent dark overlay */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+            border-radius: 0.75rem; /* Rounded corners matching Tailwind's rounded-xl */
         }
     </style>
 </head>
 
-<body class="font-sans text-z-dark" style="background-color: #f5f5f5;">
+<body class="font-sans text-z-dark">
 
     <!-- Header & Navigation -->
-    <header class="sticky top-0 z-10 bg-white shadow-lg">
+    <header class="sticky top-0 z-20 bg-white shadow-lg">
         <div class="container mx-auto px-4 py-4 flex justify-between items-center max-w-7xl">
-            <!-- Logo/Brand (REMOVED) - Now pushing links to the left and spacing them out -->
             
             <!-- Navigation Links -->
             <nav class="flex-grow flex justify-center md:justify-start space-x-6 text-lg">
@@ -77,7 +91,6 @@
             <!-- Contact Button (Moved to far right) -->
             <a href="#contact" class="px-4 py-2 bg-z-accent text-white rounded-lg hover:bg-[#065f46] transition duration-300 shadow-md">Let's Connect</a>
 
-
             <!-- Simple Mobile Menu Icon (Placeholder for functionality) -->
             <button class="md:hidden text-z-dark focus:outline-none absolute right-4">
                 <!-- Lucide Menu Icon (using SVG for portability) -->
@@ -87,7 +100,7 @@
     </header>
 
     <!-- 1. Hero & Profile Introduction (Plain white for sharp contrast) -->
-    <section class="py-24 md:py-32 bg-white border-b-4 border-z-accent">
+    <section id="about" class="py-24 md:py-32 bg-white border-b-4 border-z-accent">
         <div class="container mx-auto px-4 max-w-5xl text-center">
             <h2 class="text-5xl md:text-7xl font-extrabold mb-4 leading-tight text-z-dark">
                 Hi, I'm <span class="text-z-accent">Zefanya Violetta</span>
@@ -98,45 +111,49 @@
             <p class="text-lg text-gray-500 max-w-3xl mx-auto">
                 I value teamwork, communication, and attention to detail, whether it’s designing something meaningful or helping create a welcoming environment. Eager to learn, contribute, and grow while making a positive impact on other people.
             </p>
-            <!-- Removed 'View My Work' button here -->
         </div>
     </section>
 
-    <!-- 2. Design Portfolio Section (Texture Applied using ::after pseudo-element) -->
-    <section id="portfolio" class="py-20 md:py-28 bg-z-light">
-        <div class="container mx-auto px-4 max-w-7xl relative z-10">
+    <!-- 2. Design Portfolio Section (Each design is its own full-width background block) -->
+    <section id="portfolio" class="py-20 md:py-28 bg-white">
+        <div class="container mx-auto px-4 max-w-7xl">
             <h3 class="text-4xl font-bold text-center mb-4 text-z-dark">Design Portfolio</h3>
             <p class="text-xl text-center text-gray-600 mb-16">Selected visual works and creative projects.</p>
+        </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <!-- Project 1: Untitled design (7).jpg (T-Shirt Design) -->
-                <div class="bg-white rounded-xl shadow-xl overflow-hidden border border-gray-200">
-                    <img src="./Untitled design (7).jpg" alt="T-Shirt design featuring ramen and a figure diving into the bowl." class="w-full h-80 object-cover" onerror="this.onerror=null;this.src='https://placehold.co/600x400/04785e/ffffff?text=Design+Project+1+Placeholder';">
-                    <div class="p-6">
-                        <h4 class="text-2xl font-semibold mb-2 text-z-dark">Ramen T-Shirt Graphic</h4>
-                        <p class="text-gray-600">A playful and vibrant graphic design piece used for apparel, blending food and figure illustration.</p>
-                    </div>
-                </div>
-
-                <!-- Project 2: Untitled design (8).jpg (Mug Design) -->
-                <div class="bg-white rounded-xl shadow-xl overflow-hidden border border-gray-200">
-                    <img src="./Untitled design (8).jpg" alt="Mug design featuring ramen and a figure diving into the bowl." class="w-full h-80 object-cover" onerror="this.onerror=null;this.src='https://placehold.co/600x400/04785e/ffffff?text=Design+Project+2+Placeholder';">
-                    <div class="p-6">
-                        <h4 class="text-2xl font-semibold mb-2 text-z-dark">Custom Mug Design</h4>
-                        <p class="text-gray-600">Adaptation of the graphic for merchandise, focusing on product placement and visual appeal on a ceramic mug.</p>
-                    </div>
-                </div>
-
-                <!-- Project 3: Untitled design (6).jpg (Banana Illustration) -->
-                <div class="bg-white rounded-xl shadow-xl overflow-hidden border border-gray-200">
-                    <img src="./Untitled design (6).jpg" alt="Vector illustration of a peeled banana and banana slices floating above a plate." class="w-full h-80 object-cover" onerror="this.onerror=null;this.src='https://placehold.co/600x400/04785e/ffffff?text=Design+Project+3+Placeholder';">
-                    <div class="p-6">
-                        <h4 class="text-2xl font-semibold mb-2 text-z-dark">Vector Illustration - Banana</h4>
-                        <p class="text-gray-600">Digital illustration demonstrating skills in vector graphics, shading, and composition with rich colors.</p>
-                    </div>
+        <!-- Design 1: T-Shirt Graphic (Untitled design (7).jpg) -->
+        <div class="design-background-block shadow-2xl rounded-xl" 
+             style="background-image: url('./Untitled design (7).jpg');">
+            <div class="text-overlay">
+                <div class="text-center max-w-3xl mx-auto">
+                    <h4 class="text-4xl sm:text-5xl font-extrabold text-white mb-3 tracking-wider">Playful Apparel Graphic: "Ramen Dive"</h4>
+                    <p class="text-lg sm:text-xl text-gray-200">A vibrant, imaginative graphic design created for a T-shirt, demonstrating proficiency in vector illustration and composition. The design blends figurative elements with food art, making it highly engaging for merchandise.</p>
                 </div>
             </div>
         </div>
+
+        <!-- Design 2: Custom Mug Design (Untitled design (8).jpg) -->
+        <div class="design-background-block shadow-2xl rounded-xl" 
+             style="background-image: url('./Untitled design (8).jpg');">
+            <div class="text-overlay">
+                <div class="text-center max-w-3xl mx-auto">
+                    <h4 class="text-4xl sm:text-5xl font-extrabold text-white mb-3 tracking-wider">Merchandise Adaptation: Ceramic Mug</h4>
+                    <p class="text-lg sm:text-xl text-gray-200">This project showcases the adaptability of visual assets across different media. The original graphic was optimized and styled specifically for the curved surface of a ceramic mug, ensuring visual appeal and commercial readiness.</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Design 3: Vector Illustration - Banana (Untitled design (6).jpg) -->
+        <div class="design-background-block shadow-2xl rounded-xl" 
+             style="background-image: url('./Untitled design (6).jpg');">
+            <div class="text-overlay">
+                <div class="text-center max-w-3xl mx-auto">
+                    <h4 class="text-4xl sm:text-5xl font-extrabold text-white mb-3 tracking-wider">Digital Vector Art: Banana Study</h4>
+                    <p class="text-lg sm:text-xl text-gray-200">A detailed digital illustration focusing on rendering realistic textures and lighting using vector tools. This piece highlights technical skill in manipulating color gradients and achieving depth in static visual content.</p>
+                </div>
+            </div>
+        </div>
+
     </section>
 
     <!-- 3. Expertise & Projects Section (Plain white for sharp contrast) -->
@@ -205,8 +222,6 @@
             </p>
         </div>
     </section>
-
-    <!-- Footer (REMOVED) -->
 
 </body>
 </html>

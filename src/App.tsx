@@ -3,6 +3,7 @@ import AntiGravityCanvas from "@/components/ui/particle-effect";
 import { ShareholderReports } from "@/components/ui/carousel";
 import {type Report} from "@/components/ui/carousel";
 import { Typewriter } from "@/components/ui/typewriter";
+import { CircularTestimonials as AboutCarousel } from "@/components/ui/about-me";
 
 const Navigation: React.FC = () => {
     return (
@@ -26,7 +27,7 @@ const HeroContent: React.FC = () => {
                 </h1>
                 
                 <p className="khand max-w-2xl mx-auto text-lg md:text-xl text-white/60 font-light leading-relaxed">
-                    Experience the fluidity of data. A WebGL-inspired particle simulation running entirely on 2D Canvas for maximum compatibility and performance.
+                    Information Systems & Technology student driven by curiosity. Constantly exploring the intersection of full-stack development and machine learning. <br/> One line of code at a time ^_^
                 </p>
 
                 <div className="flex gap-7 pt-4 pointer-events-auto justify-center khand">
@@ -79,6 +80,24 @@ const HeroContent: React.FC = () => {
       const words = ["My Projects"]
       const words2 = ["About Me"]
 
+      const aboutData = [
+  {
+    title: "Frontend",
+    description: "Building responsive & beautiful interfaces.",
+    items: ["React", "Tailwind CSS", "TypeScript", "Framer Motion"]
+  },
+  {
+    title: "Backend",
+    description: "Creating scalable server-side systems.",
+    items: ["Node.js", "Python", "PostgreSQL", "API Design"]
+  },
+  {
+    title: "Machine Learning",
+    description: "Exploring data-driven insights.",
+    items: ["TensorFlow", "Scikit-Learn", "Data Analysis", "NLP"]
+  }
+];
+
 
 // --- Main App Component ---
 
@@ -97,25 +116,25 @@ export default function App() {
       </div>
 
       {/* Projects Section */}
-      <section id="about" className="relative z-10 py-16">
-        <div className="flex justify-center items-center mb-12 px-4">
-          <h2 className="masked-text text-5xl md:text-6xl array tracking-tight text-center">
-            <Typewriter words={words2} speed={150} delayBetweenWords={7000}  cursor={true} cursorChar="|"/>
-            </h2>
-            </div>
-            </section>
-
-      {/* Projects Section */}
       <section id="projects" className="relative z-10 py-16">
         <div className="flex justify-center items-center mb-12 px-4">
           <h2 className="masked-text text-5xl md:text-6xl array tracking-tight text-center">
             <Typewriter words={words} speed={150} delayBetweenWords={7000}  cursor={true} cursorChar="|"/>
             </h2>
             </div>
+      {/* Component Carousel */}
+      <ShareholderReports reports={reportsData} />
+          </section>
 
-  {/* Component Carousel */}
-  <ShareholderReports reports={reportsData} />       
-</section>
+      {/* Projects Section */}
+      <section id="about" className="relative z-10 py-16">
+        <div className="flex justify-center items-center mb-12 px-4">
+          <h2 className="masked-text text-5xl md:text-6xl array tracking-tight text-center">
+            <Typewriter words={words2} speed={150} delayBetweenWords={7000}  cursor={true} cursorChar="|"/>
+            </h2>
+            </div>
+            <AboutCarousel cards={aboutData} />
+            </section>
             
           </div>
           </div>

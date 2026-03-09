@@ -1,0 +1,6 @@
+@import "tailwindcss";
+
+body {
+  .khand { font-family: 'Khand', sans-serif; }
+  .array { font-family: 'Array', sans-serif; }
+}

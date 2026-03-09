@@ -9,7 +9,8 @@ export interface Report {
   imageSrc: string;
   projectname: string;
   link: string;
-  desc: React.ReactNode;
+  desc: string;
+  sourcecode: string;
 }
 
 
@@ -57,9 +58,7 @@ export const ShareholderReports = React.forwardRef<
   };
 
   return (
-    <section
-      
-    >
+    <section>
       <div className="flex items-center justify-between px-4 sm:px-6 mb-4">
         <h2 id="reports-heading" className="text-2xl font-semibold tracking-tight text-foreground">
           {}
@@ -94,44 +93,58 @@ export const ShareholderReports = React.forwardRef<
         ref={scrollContainerRef}
         className="flex overflow-x-auto scroll-smooth snap-x snap-mandatory scrollbar-hide space-x-4 md:space-x-6 px-4 sm:px-6"
       >
+
 {reports.map((report) => (
   <div
     key={report.id}
-    className="flex-shrink-0 w-[240px] sm:w-[280px] snap-start"
+    className="shrink w-70 sm:w-[320px] snap-start"
   >
-    {/* Container Utama Card */}
-    <div className="flex flex-col group border border-white/10 rounded-lg overflow-hidden transition-shadow duration-300 hover:shadow-lg">
+    {/* Card Container */}
+    <div className="flex flex-col h-full bg-white/5 border border-white/10 rounded-2xl overflow-hidden transition-all duration-500 hover:border-[#987ed0]/50 hover:shadow-[0_0_30px_-10px_rgba(152,126,208,0.3)]">
       
-      {/* Bagian Gambar dengan Link */}
-      <div className="relative overflow-hidden rounded-t-lg h-[320px] sm:h-[380px] group-hover:shadow-lg transition-all duration-300">
-        <a href={report.link} target="_blank" rel="noopener noreferrer" className="block h-full">
+      {/* Gambar & Judul */}
+      <div className="relative h-80 overflow-hidden">
+        <a href={report.link} target="_blank" rel="noopener noreferrer" className="block h-full group">
           <img 
             src={report.imageSrc} 
             alt={report.projectname}
-            className="w-full h-full object-cover"
+            className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
           />
-          {/* Project Name di pojok kiri bawah gambar */}
-          <div className="absolute bottom-4 left-4">
-            <h3 className="array text-2xl text-white font-bold drop-shadow-md">
+          {/* Gradient Overlay agar teks lebih terbaca */}
+          <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
+          
+          <div className="absolute bottom-6 left-6 right-6">
+            <h3 className="array text-2xl text-white font-bold leading-tight">
               {report.projectname}
             </h3>
           </div>
         </a>
       </div>
 
-      {/* Bagian Deskripsi (Hitam di bawah foto) */}
-      <div className="p-4 rounded-b-lg bg-white">
-        <p className="khand text-sm text-white/80 leading-relaxed">
+      {/* Deskripsi (Bagian Bawah) */}
+      <div className="p-6 flex-grow flex flex-col justify-between bg-black/40">
+        <div className="khand text-base text-white/70 leading-relaxed mb-4">
           {report.desc}
-        </p>
+        </div>
+        
+        <a 
+          href={report.sourcecode} 
+          target="_blank" 
+          rel="noopener noreferrer"
+          className="inline-flex items-center text-[#e8f47e] font-bold text-sm hover:translate-x-2 transition-transform"
+        >
+          View Source Code <ChevronRight className="w-4 h-4 ml-1" />
+        </a>
       </div>
-
     </div>
   </div>
 ))}
+
       </div>
     </section>
   );
 });
 
 ShareholderReports.displayName = "ShareholderReports";
+
+export default ShareholderReports;

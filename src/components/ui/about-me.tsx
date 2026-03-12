@@ -1,181 +1,219 @@
 "use client";
-import React, { useEffect, useRef, useState, useMemo, useCallback} from "react";
-import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
-import { motion, AnimatePresence } from "framer-motion";
+import React, { useRef } from "react";
+import { motion, useScroll, useTransform } from "framer-motion";
 
-interface AboutCard {
-  title: string;
-  description: string;
-  items: string[]; 
-}
+// ── Skill groups — derived from actual projects in the portfolio ────────────
+const STACK = [
+  {
+    category: "Web & Frontend",
+    color: "#e8f47e",
+    skills: ["React", "TypeScript", "Next.js", "JavaScript", "Tailwind CSS", "Figma"],
+  },
+  {
+    category: "Machine Learning & AI",
+    color: "#987ed0",
+    skills: ["Python", "Scikit-learn"],
+  },
+  {
+    category: "Data & Backend",
+    color: "#79e0e0",
+    skills: ["PostgreSQL", "Supabase", "Pandas", "API Integration"],
+  },
+  {
+    category: "Deployment & DevOps",
+    color: "#f47e7e",
+    skills: ["Streamlit", "Vercel", "Git", "GitHub Pages"],
+  },
+];
 
-interface Colors {
-  name?: string;
-  designation?: string;
-  testimony?: string;
-  arrowBackground?: string;
-  arrowForeground?: string;
-  arrowHoverBackground?: string;
-}
-interface FontSizes {
-  name?: string;
-  designation?: string;
-  quote?: string;
-}
-interface CircularTestimonialsProps {
-  cards: AboutCard[];
-  autoplay?: boolean;
-  colors?: Colors;
-  fontSizes?: FontSizes;
-}
+// ── Three scroll-reveal panels ──────────────────────────────────────────────
+// title  → shown in left-side nav, lights up when the panel is active
+// content → the full right-side panel rendered as JSX
+const sections = [
 
-function calculateGap(width: number) {
-  const minWidth = 1024;
-  const maxWidth = 1456;
-  const minGap = 60;
-  const maxGap = 86;
-  if (width <= minWidth) return minGap;
-  if (width >= maxWidth)
-    return Math.max(minGap, maxGap + 0.06018 * (width - maxWidth));
-  return minGap + (maxGap - minGap) * ((width - minWidth) / (maxWidth - minWidth));
-}
+  {
+    id: 1,
+    title: "Who I Am",
+    content: (
+      <div className="space-y-5">
+        <p className="khand text-3xl leading-relaxed text-white/80">
+          I am an Information Systems student building tools at the intersection of 
+          {" "}<span className="text-[#e8f47e]">software engineering</span> and {" "}
+          <span className="text-[#987ed0]">applied AI.</span>
+        </p>
+        <p className="khand text-lg leading-relaxed text-white/50">
+          My approach is defined by building functional, end-to-end applications rather than just model training. 
+          I focus on bridging the gap between raw data and user-friendly interfaces.
+          <br/><br/>
+          I'm a problem-solver who enjoys the full lifecycle of a project, from debugging complex conflicts, API integrations to deploying clean, accessible web applications. I am actively seeking 
+          to grow as a developer by tackling real-world challenges and contributing to robust, data-driven systems.
+        </p>
+      </div>
+    ),
+  },
 
-export const CircularTestimonials = ({
-  cards,
-  autoplay = true,
-  colors = {},
-  fontSizes = {},
-}: CircularTestimonialsProps) => {
-  const colorName = colors.name ?? "#000";
-  const colorDesignation = colors.designation ?? "#6b7280";
-  const colorTestimony = colors.testimony ?? "#4b5563";
-  const colorArrowBg = colors.arrowBackground ?? "#141414";
-  const colorArrowFg = colors.arrowForeground ?? "#f1f1f7";
-  const colorArrowHoverBg = colors.arrowHoverBackground ?? "#00a6fb";
-  const fontSizeName = fontSizes.name ?? "1.5rem";
-  const fontSizeDesignation = fontSizes.designation ?? "0.925rem";
-  const fontSizeQuote = fontSizes.quote ?? "1.125rem";
+  {
+    id: 2,
+    title: "My Stack",
+    content: (
+      <div className="space-y-6">
+        {STACK.map(({ category, color, skills }) => (
+          <div key={category}>
+            <p
+              className="khand text-xs uppercase tracking-widest mb-2"
+              style={{ color }}
+            >
+              {category}
+            </p>
+            <div className="flex flex-wrap gap-2">
+              {skills.map((s) => (
+                <span
+                  key={s}
+                  className="khand text-sm px-4 py-1.5 rounded-full border text-white/70"
+                  style={{
+                    borderColor: color + "40",
+                    background: color + "0d",
+                  }}
+                >
+                  {s}
+                </span>
+              ))}
+            </div>
+          </div>
+        ))}
+      </div>
+    ),
+  },
 
-  const [activeIndex, setActiveIndex] = useState(0);
-  const [hoverPrev, setHoverPrev] = useState(false);
-  const [hoverNext, setHoverNext] = useState(false);
-  const [containerWidth, setContainerWidth] = useState(1200);
+  {
+    id: 3,
+    title: "Let's Connect",
+    content: (
+      <div className="space-y-6">
+        <p className="khand text-3xl leading-relaxed text-white/80">
+          I'm always happy to talk!
+        </p>
+        <p className="khand text-lg leading-relaxed text-white/50">
+          Let's connect:
+        </p>
+        {/* Contact buttons — id="contacts" here so the nav link resolves */}
+        <div id="contacts" className="flex flex-wrap gap-3 pt-2">
+          <a
+            href="mailto:zefanyavioletta97@gmail.com"
+            className="khand flex items-center gap-2 px-6 py-3 rounded-full bg-[#e8f47e] text-black font-bold text-sm hover:opacity-90 transition-all hover:-translate-y-0.5"
+          >
+            Email Me
+          </a>
+          <a
+            href="https://linkedin.com/in/zefanyavioletta/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="khand flex items-center gap-2 px-6 py-3 rounded-full border border-[#987ed0] text-[#987ed0] font-bold text-sm hover:bg-[#987ed0] hover:text-black transition-all hover:-translate-y-0.5"
+          >
+            LinkedIn
+          </a>
+          <a
+            href="https://github.com/violetsareblue97"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="khand flex items-center gap-2 px-6 py-3 rounded-full border border-white/20 text-white/50 font-bold text-sm hover:border-white/50 hover:text-white transition-all hover:-translate-y-0.5"
+          >
+            GitHub
+          </a>
+          <a
+            href="/cv-zefanya.pdf"
+            download
+            className="khand flex items-center gap-2 px-6 py-3 rounded-full border border-white/20 text-white/50 font-bold text-sm hover:border-white/50 hover:text-white transition-all hover:-translate-y-0.5"
+          >
+            Resume ↓
+          </a>
+        </div>
+      </div>
+    ),
+  },
+];
 
+// ── Component ───────────────────────────────────────────────────────────────
+export const AboutMe = () => {
   const containerRef = useRef<HTMLDivElement>(null);
-  const autoplayIntervalRef = useRef<NodeJS.Timeout | null>(null);
 
-  const testimonialsLength = useMemo(() => cards.length, [cards]);
-  const activeTestimonial = useMemo(() => cards[activeIndex], [activeIndex, cards]);
-
-  useEffect(() => {
-    function handleResize() {
-      if (containerRef.current) setContainerWidth(containerRef.current.offsetWidth);
-    }
-    handleResize();
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
-  }, []);
-
-  useEffect(() => {
-    if (autoplay) {
-      autoplayIntervalRef.current = setInterval(() => {
-        setActiveIndex((prev) => (prev + 1) % testimonialsLength);
-      }, 5000);
-    }
-    return () => { if (autoplayIntervalRef.current) clearInterval(autoplayIntervalRef.current); };
-  }, [autoplay, testimonialsLength]);
-
-  const handleNext = useCallback(() => {
-    setActiveIndex((prev) => (prev + 1) % testimonialsLength);
-    if (autoplayIntervalRef.current) clearInterval(autoplayIntervalRef.current);
-  }, [testimonialsLength]);
-
-  const handlePrev = useCallback(() => {
-    setActiveIndex((prev) => (prev - 1 + testimonialsLength) % testimonialsLength);
-    if (autoplayIntervalRef.current) clearInterval(autoplayIntervalRef.current);
-  }, [testimonialsLength]);
-
-  function getBoxStyle(index: number): React.CSSProperties {
-    const gap = calculateGap(containerWidth);
-    const maxStickUp = gap * 0.8;
-    const isActive = index === activeIndex;
-    const isLeft = (activeIndex - 1 + testimonialsLength) % testimonialsLength === index;
-    const isRight = (activeIndex + 1) % testimonialsLength === index;
-
-    if (isActive) {
-      return { zIndex: 3, opacity: 1, transform: `translateX(0px) translateY(0px) scale(1) rotateY(0deg)`, transition: "all 0.8s cubic-bezier(.4,2,.3,1)" };
-    }
-    if (isLeft) {
-      return { zIndex: 2, opacity: 1, transform: `translateX(-${gap}px) translateY(-${maxStickUp}px) scale(0.85) rotateY(15deg)`, transition: "all 0.8s cubic-bezier(.4,2,.3,1)" };
-    }
-    if (isRight) {
-      return { zIndex: 2, opacity: 1, transform: `translateX(${gap}px) translateY(-${maxStickUp}px) scale(0.85) rotateY(-15deg)`, transition: "all 0.8s cubic-bezier(.4,2,.3,1)" };
-    }
-    return { zIndex: 1, opacity: 0, pointerEvents: "none", transition: "all 0.8s cubic-bezier(.4,2,.3,1)" };
-  }
+  // scrollYProgress tracks 0→1 over the full 300vh container height.
+  // Each of the three panels maps to roughly one-third of that range.
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["start start", "end end"],
+  });
 
   return (
-    <div className="testimonial-container">
-      <div className="testimonial-grid">
-        {/* Box Container (Menggantikan Image Container) */}
-        <div className="image-container" ref={containerRef}>
-          {cards.map((t, index) => (
+    // 300vh gives enough scroll room for three distinct panel transitions.
+    <section ref={containerRef} className="relative h-[300vh] text-white py-20">
+
+      {/* Sticky wrapper — stays in viewport while outer section scrolls */}
+      <div className="sticky top-20 flex flex-col md:flex-row items-start justify-center max-w-6xl mx-auto px-6 gap-12">
+
+        {/* ── LEFT: vertical progress line + section title labels ─────── */}
+        <div className="w-full md:w-1/3 flex gap-8">
+
+          {/* Progress track: fills with purple as user scrolls down */}
+          <div className="relative w-1 h-64 bg-white/10 rounded-full flex-shrink-0">
             <motion.div
-              key={index}
-              className="testimonial-box"
+              className="absolute top-0 left-0 w-full rounded-full bg-[#987ed0]"
               style={{
-                ...getBoxStyle(index),
-                position: "absolute",
-                width: "100%",
-                height: "100%",
-                display: "flex",
-                flexDirection: "column",
-                justifyContent: "center",
-                alignItems: "center",
-                padding: "2rem",
-                backgroundColor: "#987ed0",
-                borderRadius: "1.5rem",
-                boxShadow: "0 10px 30px rgba(0,0,0,0.2)",
-                cursor: "pointer"
+                height: useTransform(scrollYProgress, [0, 1], ["0%", "100%"]),
               }}
-              onClick={handleNext}
+            />
+          </div>
+
+          {/* Title labels — each transitions from dim to lime at its scroll position */}
+          <div className="flex flex-col gap-16 pt-1">
+            {sections.map((item, idx) => (
+              <motion.div key={item.id}>
+                <motion.span
+                  className="array text-xl tracking-widest uppercase block"
+                  style={{
+                    color: useTransform(
+                      scrollYProgress,
+                      [idx * 0.33, idx * 0.33 + 0.1],
+                      ["#ffffff33", "#e8f47e"]
+                    ),
+                  }}
+                >
+                  {item.title}
+                </motion.span>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+
+        {/* ── RIGHT: content panels, one per section ──────────────────── */}
+        {/* All panels are stacked at absolute position; opacity drives visibility */}
+        <div className="w-full md:w-2/3 relative min-h-[320px]">
+          {sections.map((item, idx) => (
+            <motion.div
+              key={item.id}
+              className="absolute top-0 left-0 w-full"
+              style={{
+                // Each panel: fade in → hold → fade out over its scroll third
+                opacity: useTransform(
+                  scrollYProgress,
+                  [
+                    idx * 0.33,           // start fading in
+                    idx * 0.33 + 0.08,    // fully visible
+                    idx * 0.33 + 0.24,    // start fading out
+                    idx * 0.33 + 0.33,    // fully hidden
+                  ],
+                  [0, 1, 1, 0]
+                ),
+              }}
             >
-              <h3 className="text-white font-bold text-xl">{t.title}</h3>
-              <p className="text-white/70 text-sm mt-2">{t.items}</p>
+              <div className="border-l-4 border-[#987ed0] pl-6">
+                {item.content}
+              </div>
             </motion.div>
           ))}
         </div>
 
-        {/* Content */}
-        <div className="testimonial-content">
-          <AnimatePresence mode="wait">
-            <motion.div key={activeIndex} initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} exit={{ opacity: 0, y: -20 }}>
-              <h3 className="name" style={{ color: colorName, fontSize: fontSizeName }}>{activeTestimonial.title}</h3>
-              <p className="designation" style={{ color: colorDesignation, fontSize: fontSizeDesignation }}>{activeTestimonial.items}</p>
-              <p className="quote" style={{ color: colorTestimony, fontSize: fontSizeQuote }}>{activeTestimonial.description}</p>
-            </motion.div>
-          </AnimatePresence>
-          <div className="arrow-buttons">
-            <button className="arrow-button" onClick={handlePrev} style={{ backgroundColor: hoverPrev ? colorArrowHoverBg : colorArrowBg }} onMouseEnter={() => setHoverPrev(true)} onMouseLeave={() => setHoverPrev(false)}>
-              <FaArrowLeft size={20} color={colorArrowFg} />
-            </button>
-            <button className="arrow-button" onClick={handleNext} style={{ backgroundColor: hoverNext ? colorArrowHoverBg : colorArrowBg }} onMouseEnter={() => setHoverNext(true)} onMouseLeave={() => setHoverNext(false)}>
-              <FaArrowRight size={20} color={colorArrowFg} />
-            </button>
-          </div>
-        </div>
       </div>
-      
-      {/* CSS Styles tetap sama */}
-      <style>{`
-        .testimonial-container { width: 100%; max-width: 56rem; padding: 2rem; }
-        .testimonial-grid { display: grid; gap: 5rem; }
-        .image-container { position: relative; width: 100%; height: 24rem; perspective: 1000px; }
-        .arrow-buttons { display: flex; gap: 1.5rem; padding-top: 3rem; }
-        .arrow-button { width: 2.7rem; height: 2.7rem; border-radius: 50%; display: flex; align-items: center; justify-content: center; cursor: pointer; border: none; }
-        @media (min-width: 768px) { .testimonial-grid { grid-template-columns: 1fr 1fr; } .arrow-buttons { padding-top: 0; } }
-      `}</style>
-    </div>
+    </section>
   );
 };
-export default CircularTestimonials;

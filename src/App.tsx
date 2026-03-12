@@ -3,7 +3,7 @@ import AntiGravityCanvas from "@/components/ui/particle-effect";
 import { ShareholderReports } from "@/components/ui/carousel";
 import {type Report} from "@/components/ui/carousel";
 import { Typewriter } from "@/components/ui/typewriter";
-import { CircularTestimonials as AboutCarousel } from "@/components/ui/about-me";
+import { AboutMe } from "./components/ui/about-me"; 
 
 const Navigation: React.FC = () => {
     return (
@@ -64,43 +64,35 @@ const HeroContent: React.FC = () => {
           projectname: "Libraria",
           link: "https://libraria-nu.vercel.app/",
           sourcecode: "https://github.com/violetsareblue97/Libraria.git",
-          desc: "A digital Library management web based system."
+          desc: "Developed a web based Library system that fetches and displays real-time book metadata using external APIs. Focused on building a clean UI/UX and efficient state management for a seamless browsing experience."
+        },
+
+        {
+          id: "foosecurityml",
+          imageSrc: "./public/foodsecurity.png",
+          projectname: "National Food Demand Forecasting System Using PatchTST Transformer (2025)",
+          link: "https://violetsareblue97.github.io/indonesia-food-security-forecasting/",
+          sourcecode: "https://github.com/violetsareblue97/indonesia-food-security-forecasting.git",
+          desc: "Built a PatchTST-based forecasting system that predicts Indonesia's national food consumption across 34 provinces and multiple commodities for 2026, achieving 87.34% R² accuracy."
         },
 
         {
           id: "emailsecure",
-          imageSrc: "https://b.zmtcdn.com/investor-relations/1199bb1a7e905267f520ace8be13fdad_1746093395.png",
+          imageSrc: "./public/emailsafe.png",
           projectname: "Email Secure+",
           link: "https://emailsecure.streamlit.app/",
           sourcecode: "https://github.com/violetsareblue97/email-secure.git",
-          desc: "An email phishing detector | Machine Learning."
+          desc: "A phishing detection tool that combines Machine Learning with real-time network security. It uses a Logistic Regression model to analyze email text and performs DNS lookups to verify sender domain authenticity (SPF/DMARC). It also integrates the Google Gemini API to provide clear explanations of potential threats, complete with custom UI design and robust error handling."
         }
       ];
       
       const words = ["My Projects"]
       const words2 = ["About Me"]
-
-      const aboutData = [
-  {
-    title: "Frontend",
-    description: "Building responsive & beautiful interfaces.",
-    items: ["React", "Tailwind CSS", "TypeScript", "Framer Motion"]
-  },
-  {
-    title: "Backend",
-    description: "Creating scalable server-side systems.",
-    items: ["Node.js", "Python", "PostgreSQL", "API Design"]
-  },
-  {
-    title: "Machine Learning",
-    description: "Exploring data-driven insights.",
-    items: ["TensorFlow", "Scikit-Learn", "Data Analysis", "NLP"]
-  }
-];
+      
+//--- Aout Me ---
 
 
 // --- Main App Component ---
-
 export default function App() {
   return (
     <div className="relative w-full min-h-screen bg-black">
@@ -115,6 +107,13 @@ export default function App() {
          <HeroContent />
       </div>
 
+{/* Divider Section */}
+<div className="py-12 flex justify-center w-full">
+  <div 
+    className="w-full max-w-7xl h-5 z-10 bg-linear-to-r from-[#79e0e0] via-[#987ed0] to-[#e8f47e]"
+  />
+</div>
+
       {/* Projects Section */}
       <section id="projects" className="relative z-10 py-16">
         <div className="flex justify-center items-center mb-12 px-4">
@@ -126,14 +125,21 @@ export default function App() {
       <ShareholderReports reports={reportsData} />
           </section>
 
-      {/* Projects Section */}
+          {/* Divider Section */}
+<div className="py-12 flex justify-center w-full">
+  <div 
+    className="w-full max-w-7xl h-5 z-10 bg-linear-to-r from-[#79e0e0] via-[#987ed0] to-[#e8f47e]"
+  />
+</div>
+
+      {/* About Section */}
       <section id="about" className="relative z-10 py-16">
-        <div className="flex justify-center items-center mb-12 px-4">
+        <div className="flex justify-center items-center mb-2 px-4">
           <h2 className="masked-text text-5xl md:text-6xl array tracking-tight text-center">
             <Typewriter words={words2} speed={150} delayBetweenWords={7000}  cursor={true} cursorChar="|"/>
             </h2>
             </div>
-            <AboutCarousel cards={aboutData} />
+            <AboutMe />
             </section>
             
           </div>

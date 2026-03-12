@@ -11,13 +11,12 @@ export interface Report {
   sourcecode: string;
 }
 
-// Kartu individual\
+// Kartu individual
 const ProjectCard: React.FC<{ report: Report }> = ({ report }) => {
   const [expanded, setExpanded] = React.useState(false);
 
   return (
     <div className="flex flex-col h-full rounded-tr-4xl rounded-bl-4xl bg-white/5 border border-[#987ed0] overflow-hidden transition-all duration-500 hover:border-[#79e0e0]/50 hover:shadow-[0_0_30px_-10px_rgba(152,126,208,0.3)]">
-
       {/* Gambar & judul */}
       <div className="relative h-64 overflow-hidden">
         <a href={report.link} target="_blank" rel="noopener noreferrer" className="block h-full group">
@@ -38,7 +37,6 @@ const ProjectCard: React.FC<{ report: Report }> = ({ report }) => {
       {/* Deskripsi & link */}
       <div className="p-5 flex flex-col justify-between grow bg-black/40">
         <div className="mb-4">
-          {/* Teks: clamp 3 baris kalau belum expanded */}
           <p
             className={cn(
               "khand text-sm text-white/70 leading-relaxed transition-all duration-300",
@@ -47,8 +45,6 @@ const ProjectCard: React.FC<{ report: Report }> = ({ report }) => {
           >
             {report.desc}
           </p>
-
-          {/* Tombol read more / read less */}
           <button
             onClick={() => setExpanded((prev) => !prev)}
             className="mt-2 text-xs text-[#987ed0] hover:text-[#79e0e0] transition-colors cursor-pointer khand"
@@ -66,7 +62,6 @@ const ProjectCard: React.FC<{ report: Report }> = ({ report }) => {
           View Source Code <ChevronRight className="w-4 h-4 ml-1" />
         </a>
       </div>
-
     </div>
   );
 };
@@ -75,7 +70,7 @@ const ProjectCard: React.FC<{ report: Report }> = ({ report }) => {
 export const ShareholderReports = React.forwardRef<
   HTMLDivElement,
   { reports: Report[] } & React.HTMLAttributes<HTMLDivElement>
->(({ reports }, ref) => {
+>(({ reports, ...props }, ref) => {
   const scrollContainerRef = React.useRef<HTMLDivElement>(null);
   const [canScrollLeft, setCanScrollLeft] = React.useState(false);
   const [canScrollRight, setCanScrollRight] = React.useState(true);
@@ -114,7 +109,7 @@ export const ShareholderReports = React.forwardRef<
   };
 
   return (
-    <section>
+    <section ref={ref} {...props}>
       {/* Arrow buttons */}
       <div className="flex items-center justify-end px-6 md:px-16 lg:px-24 mb-4 gap-2">
         <button
@@ -147,7 +142,7 @@ export const ShareholderReports = React.forwardRef<
         {reports.map((report) => (
           <div
             key={report.id}
-            className="shrink-0 w-[300px] sm:w-[340px] snap-start"
+            className="shrink-0 w-75 sm:w-85 snap-start" // Updated classes
           >
             <ProjectCard report={report} />
           </div>

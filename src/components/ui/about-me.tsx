@@ -80,7 +80,10 @@ const sections = [
       <div className="space-y-6">
         <p className="khand text-3xl leading-relaxed text-white/80">I'm always happy to talk!</p>
         <div id="contacts" className="flex flex-wrap gap-3 pt-2">
-          <a href="mailto:zefanyavioletta97@gmail.com" className="khand flex items-center gap-2 px-6 py-3 rounded-full bg-[#e8f47e] text-black font-bold text-sm hover:opacity-90 transition-all hover:-translate-y-0.5">
+          <a 
+            href="mailto:zefanyavioletta97@gmail.com?subject=Inquiry from Portfolio&body=Hi Zefanya, I would like to discuss..." 
+            className="khand flex items-center gap-2 px-6 py-3 rounded-full bg-[#e8f47e] text-black font-bold text-sm hover:opacity-90 transition-all hover:-translate-y-0.5"
+          >
             Email Me
           </a>
           <a href="https://linkedin.com/in/zefanyavioletta/" target="_blank" rel="noopener noreferrer" className="khand flex items-center gap-2 px-6 py-3 rounded-full border border-[#987ed0] text-[#987ed0] font-bold text-sm hover:bg-[#987ed0] hover:text-black transition-all hover:-translate-y-0.5">
@@ -89,7 +92,7 @@ const sections = [
           <a href="https://github.com/violetsareblue97" target="_blank" rel="noopener noreferrer" className="khand flex items-center gap-2 px-6 py-3 rounded-full border border-white/20 text-white/50 font-bold text-sm hover:border-white/50 hover:text-white transition-all hover:-translate-y-0.5">
             GitHub
           </a>
-          <a href="/cv-zefanya.pdf" download className="khand flex items-center gap-2 px-6 py-3 rounded-full border border-white/20 text-white/50 font-bold text-sm hover:border-white/50 hover:text-white transition-all hover:-translate-y-0.5">
+          <a href="/ZEFANYA-VIOLETTA-CV-SOFTWARE-DEVELOPER.pdf" download className="khand flex items-center gap-2 px-6 py-3 rounded-full border border-white/20 text-white/50 font-bold text-sm hover:border-white/50 hover:text-white transition-all hover:-translate-y-0.5">
             Resume ↓
           </a>
         </div>
@@ -131,15 +134,21 @@ export const AboutMe = () => {
           </div>
         </div>
 
-        <div className="w-full md:w-2/3 relative min-h-80"> {/* Updated class */}
-          {sections.map((item, idx) => (
+        <div className="w-full md:w-2/3 relative min-h-80">
+          {sections.map((item, idx) => {
+    // Tentukan apakah ini item terakhir
+    const isLast = idx === sections.length - 1;
+    
+    // Jika item terakhir, biarkan opacity tetap 1 di akhir scroll
+    const opacityOutput = isLast ? [0, 1, 1, 1] : [0, 1, 1, 0];
+    return(
             <motion.div
               key={item.id}
               className="absolute top-0 left-0 w-full"
               style={{
                 opacity: useTransform(scrollYProgress, 
                   [idx * 0.33, idx * 0.33 + 0.08, idx * 0.33 + 0.24, idx * 0.33 + 0.33], 
-                  [0, 1, 1, 0]
+                  opacityOutput
                 ),
               }}
             >
@@ -147,8 +156,9 @@ export const AboutMe = () => {
                 {item.content}
               </div>
             </motion.div>
-          ))}
-        </div>
+          );
+  })}
+</div>
       </div>
     </section>
   );

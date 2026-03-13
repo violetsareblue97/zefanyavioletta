@@ -27,7 +27,7 @@ const ProjectCard: React.FC<{ report: Report }> = ({ report }) => {
           />
           <div className="absolute inset-0 bg-linear-to-t from-black/80 via-black/20 to-transparent" />
           <div className="absolute bottom-5 left-5 right-5">
-            <h3 className="array text-xl text-white font-bold leading-tight line-clamp-2">
+            <h3 className="array text-2xl text-white tracking-wider leading-tight line-clamp-2">
               {report.projectname}
             </h3>
           </div>
@@ -142,7 +142,7 @@ export const ShareholderReports = React.forwardRef<
         {reports.map((report) => (
           <div
             key={report.id}
-            className="shrink-0 w-75 sm:w-85 snap-start" // Updated classes
+            className="shrink-0 w-[85vw] sm:w-85 snap-center sm:snap-start" // Updated classes
           >
             <ProjectCard report={report} />
           </div>

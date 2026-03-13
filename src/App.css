@@ -33,6 +33,21 @@
   }
 }
 
+/* Default styles for mobile (mobile-first) */
+.container {
+  width: 100%;
+  /* other mobile styles */
+}
+
+/* Styles for screens wider than 768px (tablet/desktop breakpoint) */
+@media screen and (min-width: 768px) {
+  .container {
+    width: 75%;
+    /* other desktop styles */
+  }
+}
+
+
 .card {
   padding: 2em;
 }

@@ -17,6 +17,33 @@ const Navigation: React.FC = () => {
     )
 }
 
+const Footer: React.FC = () => {
+    return (
+        <footer className="relative w-full py-12 mt-20 border-t border-white/10 bg-black/20 backdrop-blur-sm">
+            <div className="max-w-6xl mx-auto px-6 flex flex-col items-center gap-6">
+                
+                {/* Gradient Line Decor */}
+                <div className="w-24 h-1 bg-linear-to-r from-[#79e0e0] via-[#987ed0] to-[#e8f47e] rounded-full" />
+
+                <div className="flex flex-col items-center gap-2">
+                    <h3 className="array text-3xl md:text-4xl text-transparent bg-clip-text bg-linear-to-r from-[#987ed0] to-[#e8f47e]">
+                        Thank you for visiting!
+                    </h3>
+                    <p className="khand text-white/40 text-sm tracking-widest uppercase">
+                        © 2026 - Built by Zefanya Violetta
+                    </p>
+                </div>
+
+                {/* Quick Links for Mobile Accessibility */}
+                <div className="khand flex gap-6 text-xs uppercase tracking-wider text-white/60">
+                    <a href="#" className="hover:text-[#e8f47e] transition-colors">Back to top</a>
+                    <a href="https://github.com/violetsareblue97" target="_blank" className="hover:text-[#e8f47e] transition-colors">GitHub</a>
+                </div>
+            </div>
+        </footer>
+    );
+};
+
 const HeroContent: React.FC = () => {
     return (
         <div className="absolute inset-0 z-10 flex flex-col items-center justify-center pointer-events-none px-4">
@@ -30,19 +57,19 @@ const HeroContent: React.FC = () => {
                     Information Systems & Technology student driven by curiosity. Constantly exploring the intersection of full-stack development and machine learning. <br/> One line of code at a time ^_^
                 </p>
 
-                <div className="flex gap-7 pt-4 pointer-events-auto justify-center khand">
+                <div className="flex flex-col sm:flex-row flex-wrap gap-3 md:gap-7 pt-4 pointer-events-auto justify-center khand">
                     {/* LinkedIn */}
-                    <a href="https://linkedin.com/in/zefanyavioletta/" target="_blank" className="flex items-center px-10 py-3 border border-[#987ed0] text-[#987ed0] rounded-full font-bold hover:bg-[#987ed0] hover:text-black transition-all"
-                    ><img src="/public/linkedin.png" alt="LinkedIn" className="w-6 h-6 mr-3"/>LinkedIn
+                    <a href="https://linkedin.com/in/zefanyavioletta/" target="_blank" className="flex items-center justify-center px-10 py-3 border border-[#987ed0] text-[#987ed0] rounded-full font-bold hover:bg-[#987ed0] hover:text-black transition-all"
+                    ><img src="linkedin.png" alt="LinkedIn" className="w-6 h-6 mr-3"/>LinkedIn
                     </a>
 
                     {/* Github */}
-                    <a href="https://github.com/violetsareblue97" target="_blank" className="flex items-center px-10 py-3 border border-[#987ed0] text-[#987ed0] rounded-full font-bold hover:bg-[#987ed0] hover:text-black transition-all"
-                    ><img src="/public/github.png" alt="GitHub" className="w-6 h-6 mr-3"/>GitHub
+                    <a href="https://github.com/violetsareblue97" target="_blank" className="flex items-center justify-center px-10 py-3 border border-[#987ed0] text-[#987ed0] rounded-full font-bold hover:bg-[#987ed0] hover:text-black transition-all"
+                    ><img src="github.png" alt="GitHub" className="w-6 h-6 mr-3"/>GitHub
                     </a>
 
                     {/* Resume*/}
-                    <a href="/cv-zefanya.pdf" download className="px-6 py-3 bg-[#e8f47e] text-black rounded-full font-bold hover:opacity-90 transition-all flex items-center gap-2">
+                    <a href="/ZEFANYA-VIOLETTA-CV-SOFTWARE-DEVELOPER.pdf" download className=" px-6 py-3 bg-[#e8f47e] text-black rounded-full font-bold hover:opacity-90 transition-all gap-2">
                         Download My Resume
                     </a>
 
@@ -60,7 +87,7 @@ const HeroContent: React.FC = () => {
         const reportsData: Report[] = [
           {
           id: "libraria",
-          imageSrc: "./public/libraria.png",
+          imageSrc: "libraria.png",
           projectname: "Libraria",
           link: "https://libraria-nu.vercel.app/",
           sourcecode: "https://github.com/violetsareblue97/Libraria.git",
@@ -69,7 +96,7 @@ const HeroContent: React.FC = () => {
 
         {
           id: "foosecurityml",
-          imageSrc: "./public/foodsecurity.png",
+          imageSrc: "foodsecurity.png",
           projectname: "National Food Demand Forecasting System Using PatchTST Transformer (2025)",
           link: "https://violetsareblue97.github.io/indonesia-food-security-forecasting/",
           sourcecode: "https://github.com/violetsareblue97/indonesia-food-security-forecasting.git",
@@ -78,11 +105,20 @@ const HeroContent: React.FC = () => {
 
         {
           id: "emailsecure",
-          imageSrc: "./public/emailsafe.png",
+          imageSrc: "emailsafe.png",
           projectname: "Email Secure+",
           link: "https://emailsecure.streamlit.app/",
           sourcecode: "https://github.com/violetsareblue97/email-secure.git",
-          desc: "A phishing detection tool that combines Machine Learning with real-time network security. It uses a Logistic Regression model to analyze email text and performs DNS lookups to verify sender domain authenticity (SPF/DMARC). It also integrates the Google Gemini API to provide clear explanations of potential threats, complete with custom UI design and robust error handling."
+          desc: "A phishing detection tool that combines Machine Learning with real-time network security. It uses a Logistic Regression model to analyze email text and performs DNS lookups to verify sender domain authenticity (SPF/DMARC). I also integrates the Google Gemini API to provide clear explanations of potential threats, complete with custom UI design and error handling."
+        },
+
+        {
+          id: "wedding",
+          imageSrc: "wedding.jpg",
+          projectname: "Wedding Invitation Website (In Progress)",
+          link: "https://sandya-kukuh.vercel.app/",
+          sourcecode: "https://github.com/violetsareblue97/wedding-invitation.git",
+        desc:"Currently building an interactive wedding invitation using Next.js, where I decided to move away from traditional menus and implement object-based navigation instead. Since most guests open these on their phones, I designed it with a mobile-first 9:16 aspect ratio to keep the experience feeling like a native app. On the technical side, I integrated Supabase to handle real-time RSVP data and guest messages. I also made sure to include practical features like a background music player and a copy-to-clipboard function for bank details to make things easier for the guests."
         }
       ];
       
@@ -110,7 +146,7 @@ export default function App() {
 {/* Divider Section */}
 <div className="py-12 flex justify-center w-full">
   <div 
-    className="w-full max-w-7xl h-5 z-10 bg-linear-to-r from-[#79e0e0] via-[#987ed0] to-[#e8f47e]"
+    className="w-full max-w-7xl h-5 z-10 bg-linear-to-r from-[#79e0e0]/30 via-[#987ed0]/30 to-[#e8f47e]/30"
   />
 </div>
 
@@ -128,7 +164,7 @@ export default function App() {
           {/* Divider Section */}
 <div className="py-12 flex justify-center w-full">
   <div 
-    className="w-full max-w-7xl h-5 z-10 bg-linear-to-r from-[#79e0e0] via-[#987ed0] to-[#e8f47e]"
+    className="w-full max-w-7xl h-5 z-10 bg-linear-to-r from-[#79e0e0]/30 via-[#987ed0]/30 to-[#e8f47e]/30"
   />
 </div>
 
@@ -141,8 +177,10 @@ export default function App() {
             </div>
             <AboutMe />
             </section>
-            
           </div>
+          <div className="relative z-10 w-full">
+      <Footer />
+      </div>
           </div>
         );
       }

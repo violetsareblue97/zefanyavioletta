@@ -64,7 +64,7 @@ const HeroContent: React.FC = () => {
                     </a>
 
                     {/* Github */}
-                    <a href="https://github.com/violetsareblue97" target="_blank" className="flex items-center justify-center px-10 py-3 border border-[#987ed0] text-[#987ed0] rounded-full font-bold hover:bg-[#987ed0] hover:text-black transition-all"
+                    <a href="https://github.com/zefanyavioletta" target="_blank" className="flex items-center justify-center px-10 py-3 border border-[#987ed0] text-[#987ed0] rounded-full font-bold hover:bg-[#987ed0] hover:text-black transition-all"
                     ><img src="github.png" alt="GitHub" className="w-6 h-6 mr-3"/>GitHub
                     </a>
 

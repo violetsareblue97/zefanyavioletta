@@ -2,7 +2,7 @@
 import { useRef } from "react"; // Removed React
 import { motion, useScroll, useTransform } from "framer-motion";
 
-// ── Skill groups — derived from actual projects in the portfolio ────────────
+// Skill groups
 const STACK = [
   {
     category: "Web & Frontend",
@@ -12,18 +12,23 @@ const STACK = [
   {
     category: "Machine Learning & AI",
     color: "#987ed0",
-    skills: ["Python", "Scikit-learn"],
+    skills: ["Python", "Scikit-learn", "Pytorch"],
   },
   {
     category: "Data & Backend",
     color: "#79e0e0",
-    skills: ["SQL", "PostgreSQL", "Supabase", "Pandas", "API Integration"],
+    skills: ["SQL", "MySQL", "Supabase"],
   },
   {
-    category: "Deployment & DevOps",
+    category: "Deployment & Tools",
     color: "#f47e7e",
-    skills: ["Streamlit", "Vercel", "Git", "GitHub Pages"],
+    skills: ["Streamlit", "Vercel", "Git", "GitHub"],
   },
+    {
+    category: "Deployment & Tools",
+    color: "#f47e7e",
+    skills: ["Streamlit", "Vercel", "Git", "GitHub"],
+  }
 ];
 
 // ── Three scroll-reveal panels ──────────────────────────────────────────────
@@ -34,15 +39,13 @@ const sections = [
     content: (
       <div className="space-y-5">
         <p className="khand text-3xl leading-relaxed text-white/80">
-          I am an Information Systems student building tools at the intersection of 
+          A final-year Information Systems and Technology student that eager to learn and passionate about building tools at the intersection of 
           {" "}<span className="text-[#e8f47e]">software engineering</span> and {" "}
-          <span className="text-[#987ed0]">applied AI.</span>
+          <span className="text-[#987ed0]">machine learning.</span>
         </p>
         <p className="khand text-lg leading-relaxed text-white/50">
-          My approach is defined by building functional, end-to-end applications rather than just model training. 
-          I focus on bridging the gap between raw data and user-friendly interfaces.
-          <br/><br/>
-          I'm a problem-solver who enjoys the full lifecycle of a project, from debugging complex conflicts, API integrations to deploying clean, accessible web applications.
+          My approach is defined by building functional, end-to-end projects.
+          I'm a problem-solver who enjoys the full lifecycle of a project, from debugging conflicts, to deploying accessible applications.
         </p>
       </div>
     ),
@@ -61,8 +64,8 @@ const sections = [
               {skills.map((s) => (
                 <span
                   key={s}
-                  className="khand text-sm px-4 py-1.5 rounded-full border text-white/70"
-                  style={{ borderColor: color + "40", background: color + "0d" }}
+                  className="khand flex items-center gap-2 px-6 py-3 rounded-full text-black font-bold text-sm hover:opacity-90 transition-all hover:-translate-y-0.5"
+                  style={{ backgroundColor: color, color: "#000" }}
                 >
                   {s}
                 </span>

@@ -23,11 +23,6 @@ const STACK = [
     category: "Deployment & Tools",
     color: "#f47e7e",
     skills: ["Streamlit", "Vercel", "Git", "GitHub"],
-  },
-    {
-    category: "Deployment & Tools",
-    color: "#f47e7e",
-    skills: ["Streamlit", "Vercel", "Git", "GitHub"],
   }
 ];
 

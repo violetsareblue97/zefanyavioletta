@@ -90,7 +90,7 @@ const sections = [
           <a href="https://github.com/violetsareblue97" target="_blank" rel="noopener noreferrer" className="khand flex items-center gap-2 px-6 py-3 rounded-full border border-white/20 text-white/50 font-bold text-sm hover:border-white/50 hover:text-white transition-all hover:-translate-y-0.5">
             GitHub
           </a>
-          <a href="/ZEFANYA-VIOLETTA-CV-SOFTWARE-DEVELOPER.pdf" download className="khand flex items-center gap-2 px-6 py-3 rounded-full border border-white/20 text-white/50 font-bold text-sm hover:border-white/50 hover:text-white transition-all hover:-translate-y-0.5">
+          <a href="/ZEFANYA-VIOLETTA-VIOLETTA-ROSINTA.pdf" download className="khand flex items-center gap-2 px-6 py-3 rounded-full border border-white/20 text-white/50 font-bold text-sm hover:border-white/50 hover:text-white transition-all hover:-translate-y-0.5">
             Resume ↓
           </a>
         </div>

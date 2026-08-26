@@ -69,7 +69,7 @@ const HeroContent: React.FC = () => {
                     </a>
 
                     {/* Resume*/}
-                    <a href="/ZEFANYA-VIOLETTA-CV-SOFTWARE-DEVELOPER.pdf" download className=" px-6 py-3 bg-[#e8f47e] text-black rounded-full font-bold hover:opacity-90 transition-all gap-2">
+                    <a href="/ZEFANYA-VIOLETTA-ROSINTA-SITORUS.pdf" download className=" px-6 py-3 bg-[#e8f47e] text-black rounded-full font-bold hover:opacity-90 transition-all gap-2">
                         Download My Resume
                     </a>
 
@@ -90,35 +90,46 @@ const HeroContent: React.FC = () => {
           imageSrc: "libraria.png",
           projectname: "Libraria",
           link: "https://libraria-nu.vercel.app/",
-          sourcecode: "https://github.com/violetsareblue97/Libraria.git",
-          desc: "Developed a web based Library system that fetches and displays real-time book metadata using external APIs. Focused on building a clean UI/UX and efficient state management for a seamless browsing experience."
+          sourcecode: "https://github.com/zefanyavioletta/Libraria",
+          desc: "Developed a web based Library system using Next.js and TypeScript. Complete with Authentication system. Fetches and displays real-time book metadata using open library APIs."
         },
 
-        {
-          id: "foosecurityml",
-          imageSrc: "foodsecurity.png",
-          projectname: "National Food Demand Forecasting System Using PatchTST Transformer (2025)",
-          link: "https://violetsareblue97.github.io/indonesia-food-security-forecasting/",
-          sourcecode: "https://github.com/violetsareblue97/indonesia-food-security-forecasting.git",
-          desc: "Built a PatchTST-based forecasting system that predicts Indonesia's national food consumption across 34 provinces and multiple commodities for 2026, achieving 87.34% R² accuracy."
+                  {
+          id: "bookish",
+          imageSrc: "bookish.png",
+          projectname: "Bookish",
+          link: "https://bookish.vercel.app/",
+          sourcecode: "https://github.com/zefanyavioletta/Bookish",
+          desc: "A bookstore company profile website built with Laravel. Features a catalog of books from database and fetches book details from open library API in real-time."
         },
+
+
 
         {
           id: "emailsecure",
           imageSrc: "emailsafe.png",
           projectname: "Email Secure+",
           link: "https://emailsecure.streamlit.app/",
-          sourcecode: "https://github.com/violetsareblue97/email-secure.git",
-          desc: "A phishing detection tool that combines Machine Learning with real-time network security. It uses a Logistic Regression model to analyze email text and performs DNS lookups to verify sender domain authenticity (SPF/DMARC). I also integrates the Google Gemini API to provide clear explanations of potential threats, complete with custom UI design and error handling."
+          sourcecode: "https://github.com/zefanyavioletta/email-secure",
+          desc: "A phishing detection tool that combines Machine Learning with real-time network security. Built with Python. Uses Logistic Regression model to analyze email text and performs DNS lookups to verify sender domain authenticity (SPF/DMARC). Integrates Google Gemini API to provide explanations of potential threats."
         },
 
         {
           id: "wedding",
-          imageSrc: "wedding.jpg",
-          projectname: "Wedding Invitation Website (In Progress)",
-          link: "https://sandya-kukuh.vercel.app/",
-          sourcecode: "https://github.com/violetsareblue97/wedding-invitation.git",
-        desc:"Currently building an interactive wedding invitation using Next.js, where I decided to move away from traditional menus and implement object-based navigation instead. Since most guests open these on their phones, I designed it with a mobile-first 9:16 aspect ratio to keep the experience feeling like a native app. On the technical side, I integrated Supabase to handle real-time RSVP data and guest messages. I also made sure to include practical features like a background music player and a copy-to-clipboard function for bank details to make things easier for the guests."
+          imageSrc: "wedding.png",
+          projectname: "Wedding Invitation Website",
+          link: "https://sandyakukuh.vercel.app/",
+          sourcecode: "https://github.com/zefanyavioletta/wedding-invitation",
+          desc: "A Digital Wedding Invitation Website built with Next.js and Tailwind CSS. Features a complete RSVP forms integrated with Supabase, and more personalized features."
+        },
+        
+        {
+          id: "foodsecurityml",
+          imageSrc: "foodsecurity.png",
+          projectname: "National Food Demand Forecasting System Using PatchTST Transformer",
+          link: "https://violetsareblue97.github.io/indonesia-food-security-forecasting/",
+          sourcecode: "https://github.com/violetsareblue97/indonesia-food-security-forecasting",
+          desc: "Built a PatchTST-based forecasting system that predicts Indonesia's national food consumption across 34 provinces and multiple commodities for 2026, achieving 87.34% R² accuracy."
         }
       ];
       
@@ -146,7 +157,7 @@ export default function App() {
 {/* Divider Section */}
 <div className="py-12 flex justify-center w-full">
   <div 
-    className="w-full max-w-7xl h-5 z-10 bg-linear-to-r from-[#79e0e0]/30 via-[#987ed0]/30 to-[#e8f47e]/30"
+    className="w-full max-w-7xl h-5 z-10 rounded-2xl bg-linear-to-r from-[#79e0e0]/30 via-[#987ed0]/30 to-[#e8f47e]/30"
   />
 </div>
 
@@ -164,7 +175,7 @@ export default function App() {
           {/* Divider Section */}
 <div className="py-12 flex justify-center w-full">
   <div 
-    className="w-full max-w-7xl h-5 z-10 bg-linear-to-r from-[#79e0e0]/30 via-[#987ed0]/30 to-[#e8f47e]/30"
+    className="w-full max-w-7xl h-5 z-10 rounded-2xl bg-linear-to-r from-[#79e0e0]/30 via-[#987ed0]/30 to-[#e8f47e]/30"
   />
 </div>
 
